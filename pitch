@@ -1,0 +1,8 @@
+Idea 1:
+When customers make a purchase using square (SQUARE API) during an in person transaction an account for them is then created in the businesses Shopify store (SHOPIFY API). Subsequently their email is sent to Mailchimp (MAILCHIMP API) who sends out a thank you for your purchase email. The customers purchase and email and any other information collected is then stored in our central store database
+
+Idea 2:
+Based on food choice, recommend a wine. The user chooses a meal on the "Food API." We break that meal down into ingredients, sweet/salty, rich/light (all this info is available in the api). Using this info, we recommend a dry/sweet and red/white wine. We find a specific brand using VinTank Wine Search API or Wine.com API. We can also see if it's sold nearby using Wine-Searcher API. We show the wine brand and nearby location. We provide a brief explanation why we chose this wine ("your meal includes turkey," "your meal is rich in fat") or fun, we can include an option that selects a random meal and recommends a wine based on that.
+
+Idea 3: 
+A lookbook app that allows the user to take a picture of a piece of clothing or accessory, and the app returns a  gallery of possible outfits that work well with the clothing or accessory. We can use the IBM Watson Visual Recognition API for analyzing the photo and the Thread Genius API or Flickr API to create the gallery based on keywords from the annotated image the IBM API returns. The outfit would be determine by context (casual, business, formal, preppy, etc) and maybe weather (Weather Channel API?)
