@@ -1,0 +1,23 @@
+﻿CUSTOMER VIEW
+As a customer, I want to be able to have a record of all the purchases I’ve made from a store whether online or in-person so I can know how much I’ve spent from a store.
+
+
+A customer visits an e-commerce store’s pop-up shopping event and purchases an item using a credit card and the store’s Square reader. Their customer info (name, email, phone number, and purchase information) are sent to the store’s corresponding Shopify account, where the customer info is logged. The customer is then sent an email from the Shopify store that contains a thank you for their purchase and a link to create their online account with a username and password. Should the customer already have a record they are not asked to create a new account. 
+
+
+STORE OWNER VIEW- EXAMPLE ONE
+As a brand ambassador, I want to be able to easily share the sales I made so that the owner of my company can keep track of the sales I made. 
+
+
+A store primarily does e-commerce sales. They decide to send one of their brand ambassadors with some of their products to an event but want to make sure they can keep track of what products are purchased. The brand ambassador attends the event with their square reader and sells products there. They collect transaction information (customer name and purchase information) using their square reader by having the customer swipe their card, and at the same time ask for the customer’s phone number and email. The store owner has connected their store’s Shopify account and Square accounts so all of the sales the brand ambassador makes are logged by customer into the Shopify store.
+
+
+
+
+
+
+STORE OWNER VIEW- EXAMPLE TWO
+As a store owner, I want to be able to track my in-person and online sales all in one place so I have a holistic view of how my company is doing.
+
+
+A store owner wants to know how many sales they’ve made in the last month. They don’t want to have to track sales in person that they made using a square reader and the sales they made online separately. They log into our app and connect their two accounts. Now they can review their Shopify store customer transactions where the purchase history from their in-person and online customers is housed regardless of how the customer made a purchase.
