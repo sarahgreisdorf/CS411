@@ -9,6 +9,9 @@ you input the sample credit card.
 
 https://developer.squareup.com/docs/payment-form/payment-form-walkthrough#23-test-the-payment-flow-from-client-to-server
 
+Do "npm install" to install the node dependencies, then "npm start" to start the server. 
+(This is explained in the beginning of the walkthrough.)
+
 The folder "sqpaymentform-nodejs-starterkit-master" contains my version of the walkthrough 
 code. It is linked to my Square developer account, so any sample payments conducted will 
 be stored in my account payment history. At the time of writing this, I have done two sample 
