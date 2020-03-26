@@ -1,0 +1,4 @@
+﻿A document explaining why you chose the technology stack that you are demonstrating; I’d like to know if you considered other stacks, and the process you used to choose the stack for the prototype. The doc should be added to your ‘docs’ folder on github.
+
+
+We chose to go with the MEAN stack for a couple of reasons. First, it was the stack we were most familiar with and therefore it would allow us to more easily get our project up and running. Second, looking at the docs for the API’s we were using, there was a lot of support in the form tutorials and packages for node.js, making it possible for us to easily integrate with express for our backend. Lastly, because the MEAN Stack components support programs that are written in JavaScript, our application can be written in one language for both sides of the execution environments.
