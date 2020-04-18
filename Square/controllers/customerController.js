@@ -30,7 +30,7 @@ exports.new_customer = async function (req, res) {
 			...response.customer,
 			sq_id: response.customer.id,
 		});
-		new_customer.save(function (error) {
+		await new_customer.save(function (error) {
 			if (error) res.send(error);
 		});
 		res.status(200).json({
