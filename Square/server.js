@@ -17,6 +17,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const squareConnect = require('square-connect');
 const customerRouter = require('./routes/customer');
+const catalogRouter = require('./routes/catalog');
 const Customer = require('./models/customerModel');
 
 dotenv.config();
@@ -41,6 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 app.use('/customer', customerRouter);
+app.use('/catalog', catalogRouter);
 
 // Set Square Connect credentials and environment
 const defaultClient = squareConnect.ApiClient.instance;
