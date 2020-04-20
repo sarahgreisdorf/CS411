@@ -1,6 +1,9 @@
+require('../models/orderModel');
 const squareConnect = require('square-connect');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
+const Order = mongoose.model('Orders');
 
 dotenv.config();
 
@@ -22,19 +25,23 @@ defaultClient.basePath = 'https://connect.squareupsandbox.com';
 exports.pay_order = async function(req, res) {
   const request_params = req.body;
   const idempotency_key = crypto.randomBytes(22).toString('hex');
+  const toPay = await Order.findOne({"state": "OPEN"}, function(order) {
+    if(order == null) res.status(404).send("No open orders")
+  })
   
   const request_body = {
 		source_id: request_params.nonce,
 		amount_money: {
-			amount: request_params.amount, // $1.00 charge
+			amount: toPay.total_money.amount, // $1.00 charge
 			currency: 'USD',
     },
-    order_id: request_params.orderId,
+    order_id: toPay.order_id,
 		idempotency_key: idempotency_key,
 	};
 
 	try {
-		const response = await payments_api.createPayment(request_body);
+    const response = await payments_api.createPayment(request_body);
+    await Order.updateOne({"state": "OPEN"}, {"state": "COMPLETED"})
 		res.status(200).json({
 			title: 'Payment Successful',
 			result: response,
