@@ -1,6 +1,9 @@
+require('../models/orderModel');
 const squareConnect = require('square-connect');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
+const Order = mongoose.model('Orders');
 
 dotenv.config();
 
@@ -35,6 +38,13 @@ exports.create_order = async function (req, res) {
 	};
 	try {
 		const response = await orders_api.createOrder(locationId, request_body);
+		const new_order = new Order({
+			...response.order,
+			order_id: response.order.id,
+		})
+		await new_order.save(function(error) {
+			if(error) res.send(error);
+		});
 		res.send(response);
 	} catch (error) {
 		res.status(500).send(error);
