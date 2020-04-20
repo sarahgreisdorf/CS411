@@ -25,6 +25,7 @@ defaultClient.basePath = 'https://connect.squareupsandbox.com';
 exports.pay_order = async function(req, res) {
   const request_params = req.body;
   const idempotency_key = crypto.randomBytes(22).toString('hex');
+  //Query DB to find open orders
   const toPay = await Order.findOne({"state": "OPEN"}, function(order) {
     if(order == null) res.status(404).send("No open orders")
   })
@@ -32,7 +33,7 @@ exports.pay_order = async function(req, res) {
   const request_body = {
 		source_id: request_params.nonce,
 		amount_money: {
-			amount: toPay.total_money.amount, // $1.00 charge
+			amount: toPay.total_money.amount,
 			currency: 'USD',
     },
     order_id: toPay.order_id,
@@ -41,6 +42,7 @@ exports.pay_order = async function(req, res) {
 
 	try {
     const response = await payments_api.createPayment(request_body);
+    //Update status of order after its paid
     await Order.updateOne({"state": "OPEN"}, {"state": "COMPLETED"})
 		res.status(200).json({
 			title: 'Payment Successful',

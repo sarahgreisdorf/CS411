@@ -38,6 +38,7 @@ exports.create_order = async function (req, res) {
 	};
 	try {
 		const response = await orders_api.createOrder(locationId, request_body);
+		//Store order in DB
 		const new_order = new Order({
 			...response.order,
 			order_id: response.order.id,
