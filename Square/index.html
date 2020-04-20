@@ -26,41 +26,6 @@
 		Get ready for your first payment with Square!
 
 		<div id="form-container">
-			<form action="http://localhost:3000/newCustomer" method="post">
-				<h2>Save a Customer Profile</h2>
-				<label>Name</label>
-				<input type="text" id="name" name="name" placeholder="Name" />
-				<label>Email</label>
-				<input
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Email"
-					required
-				/>
-
-				<!--We recommend you ask your customers for consent before saving any customer information.-->
-				<p>
-					<input type="checkbox" name="checkbox" value="check" required />
-					Allow us to save your information to a customer profile.
-				</p>
-
-				<!--You must ask your customers for consent before saving credit card information.
-        Uncomment this extra checkbox if you want to save cards on file.-->
-				<!--
-        <p>
-          <input type="checkbox" name="checkbox" value="check" required>
-          Allow us to save your credit card information for future purchases.
-        </p>
-        -->
-				<input
-					type="submit"
-					id="submit"
-					value="submit"
-					class="btn btn-primary"
-				/>
-			</form>
-
 			<div id="sq-card-number"></div>
 			<div class="third" id="sq-expiration-date"></div>
 			<div class="third" id="sq-cvv"></div>
@@ -70,7 +35,7 @@
 				class="button-credit-card"
 				onclick="onGetCardNonce(event)"
 			>
-				Pay $1.00
+				Pay $2.00
 			</button>
 		</div>
 		<!-- end #form-container -->
@@ -133,7 +98,7 @@
 						alert(`The generated nonce is:\n${nonce}`);
 
 						//TODO: Replace alert with code in step 2.1
-						fetch('process-payment', {
+						fetch('payment/pay-order', {
 							method: 'POST',
 							headers: {
 								Accept: 'application/json',
@@ -141,6 +106,8 @@
 							},
 							body: JSON.stringify({
 								nonce: nonce,
+								amount: 200,
+								orderId: 'gE7zkJPQbn5oqeyYhqJLA7hnqf4F',
 							}),
 						})
 							.catch((err) => {
@@ -163,7 +130,7 @@
 							.catch((err) => {
 								console.error(err);
 								alert(
-									'Payment failed to complete!\nCheck browser developer console for more details'
+									err
 								);
 							});
 					},
