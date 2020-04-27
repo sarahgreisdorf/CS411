@@ -41,5 +41,6 @@ app.use('/customer', customerRouter);
 app.use('/catalog', catalogRouter);
 app.use('/order', orderRouter);
 app.use('/payment', paymentRouter);
+app.use('/shopifyCustomer', shopifyCustomerRouter)
 
 app.listen(port, () => console.log(`listening on - http://localhost:${port}`));
