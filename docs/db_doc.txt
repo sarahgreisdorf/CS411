@@ -1,0 +1,21 @@
+// Customer model, customer is cached in DB after customer info is saved in Square, and customer object is sent back as res. Customer ID is retrieved from DB to link customers to their orders.
+{ 
+Object_id: String //Default key assigned by Mongo
+sq_id: String, //Required, retrieved by response after customer successfully saved in Square, primary key
+given_name: String, // Required
+family_name: String,
+email_address: String, //Required
+phone_number: String, 
+} 
+
+// Order Model, orders placed are cached in the DB, so relevant info can be pulled at payment endpoint. Order object is saved in DB after order is placed and req/res is made to Square Orders API
+{
+Object_id: String, // Default key assigned by Mongo
+order_id: String, // Primary key, retrieved from response after order successfully placed in Square
+total_money: {
+	amount: Number, // Required
+	currency: String, // Required
+},
+state: String, // Either 'OPEN' or 'COMPLETED', when order is placed, 'OPEN' by default. Once an order is completed at payment page, object is updated to completed.
+customer_id: String, //Optional, but links a customer to order
+}
